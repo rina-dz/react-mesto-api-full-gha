@@ -1,0 +1,18 @@
+.sign__title {
+    color: white;
+    width: 358px;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29.05px;
+    margin: 60px auto 20px;
+    text-align: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .sign__title {
+        font-size: 20px;
+        width: 260px;
+        line-height: 24.2px;
+        margin: 40px auto 10px;
+    } 
+}

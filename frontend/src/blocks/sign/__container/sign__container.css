@@ -1,0 +1,12 @@
+.sign__container {
+    display: block;
+    text-align: center;
+    max-width: 358px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .sign__container {
+        max-width: 260px;
+    } 
+}

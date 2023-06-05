@@ -1,0 +1,21 @@
+.sign__link {
+    color: white;
+    max-width: 358px;
+    margin: 0 auto 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    transition: opacity 0.5s;
+    text-decoration: none;
+}
+
+.sign__link:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .sign__link {
+        width: 260px;
+    }
+}
