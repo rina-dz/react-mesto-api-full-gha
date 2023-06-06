@@ -24,10 +24,6 @@ const app = express();
 
 app.use(cors());
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
-
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 })
@@ -90,3 +86,7 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use(error);
+
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
