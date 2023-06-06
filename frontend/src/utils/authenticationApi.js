@@ -61,7 +61,8 @@ class authenticationApi {
 }
 
 const newAuthApi = new authenticationApi({
-    baseUrl: 'https://auth.nomoreparties.co'
+//    baseUrl: 'https://auth.nomoreparties.co'
+      baseUrl: 'http://api.rin.dz.nomoredomains.rocks'
 })
 
 export { newAuthApi };
