@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -14,6 +15,7 @@ const {
 
 const auth = require('./middlewares/auth');
 const error = require('./middlewares/error');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const NotFoundError = require('./utils/errors/not-found-err');
 
@@ -38,6 +40,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// логгер запросов
+app.use(requestLogger);
+
+// удалить этот тест после прохождения ревью
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post(
   '/signin',
@@ -71,6 +83,9 @@ app.use('/cards', cardRouters);
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Запрос по несуществующему маршруту'));
 });
+
+// логгер ошибок
+app.use(errorLogger);
 
 app.use(errors());
 
