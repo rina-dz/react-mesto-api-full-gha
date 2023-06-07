@@ -149,6 +149,7 @@ function App() {
     newAuthApi.authorization(info.password, info.email)
       .then((data) => {
         if (data.token) {
+          console.log(data.token);
           localStorage.setItem('token', data.token);
         }
         changeState(true);
