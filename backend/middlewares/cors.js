@@ -1,6 +1,8 @@
 const allowedCors = [
   'http://api.rin.dz.nomoredomains.rocks',
   'http://localhost:3000',
+  'https://api.rin.dz.nomoredomains.rocks',
+  'https://localhost:3000',
   'https://web.postman.co',
 ];
 

@@ -54,7 +54,7 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('token');
     if (jwt) {
       newAuthApi.tokenValidityCheck(jwt)
         .then((res) => {
@@ -69,7 +69,7 @@ function App() {
   }, [])
 
   function signOut() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     changeState(false);
     navigate('/sign-in', { replace: true });
   }
@@ -149,7 +149,7 @@ function App() {
     newAuthApi.authorization(info.password, info.email)
       .then((data) => {
         if (data.token) {
-          localStorage.setItem('jwt', data.token);
+          localStorage.setItem('token', data.token);
         }
         changeState(true);
         setCurrentEmail(info.email);

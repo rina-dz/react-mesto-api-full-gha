@@ -103,7 +103,6 @@ const newApi = new Api({
   baseUrl: 'https://api.rin.dz.nomoredomains.rocks/',
   //baseUrl: 'https://nomoreparties.co/v1/cohort-60/',
   headers: {
-    authorization: '9d97c533-6f82-4668-9816-7bf0cf3c6ccd',
     'Content-Type': 'application/json'
   }
 })
