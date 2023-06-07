@@ -55,6 +55,7 @@ function App() {
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('token');
+    console.log(jwt);
     if (jwt) {
       newAuthApi.tokenValidityCheck(jwt)
         .then((res) => {
