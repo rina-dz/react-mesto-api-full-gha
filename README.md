@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.14.205
+IP 51.250.14.205
 
 Frontend https://rin.dz.nomoredomains.rocks
 

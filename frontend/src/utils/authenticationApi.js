@@ -53,7 +53,8 @@ class authenticationApi {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
+                // "Authorization": `Bearer ${token}`
+                "Authorization": `${token}`
             }
         })
     }
@@ -61,7 +62,6 @@ class authenticationApi {
 }
 
 const newAuthApi = new authenticationApi({
-//    baseUrl: 'https://auth.nomoreparties.co'
       baseUrl: 'https://api.rin.dz.nomoredomains.rocks'
 })
 

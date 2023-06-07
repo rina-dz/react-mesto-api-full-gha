@@ -101,7 +101,6 @@ class Api {
 
 const newApi = new Api({
   baseUrl: 'https://api.rin.dz.nomoredomains.rocks/',
-  //baseUrl: 'https://nomoreparties.co/v1/cohort-60/',
   headers: {
     'Content-Type': 'application/json'
   }
