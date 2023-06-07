@@ -53,7 +53,7 @@ class authenticationApi {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                authorization: `Bearer ${token}`
+                'authorization': `Bearer ${token}`
             }
         })
     }
