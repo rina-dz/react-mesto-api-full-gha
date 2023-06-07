@@ -40,7 +40,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     newApi.getUserInfo()
@@ -51,7 +51,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('token');
@@ -66,7 +66,7 @@ function App() {
           console.log(err);
         })
     }
-  }, [])
+  }, [loggedIn]);
 
   function signOut() {
     localStorage.removeItem('token');
@@ -149,6 +149,7 @@ function App() {
     newAuthApi.authorization(info.password, info.email)
       .then((data) => {
         if (data.token) {
+          // data.token без Bearer
           console.log(data.token);
           localStorage.setItem('token', data.token);
         }

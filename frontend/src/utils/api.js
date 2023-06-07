@@ -102,7 +102,8 @@ class Api {
 const newApi = new Api({
   baseUrl: 'https://api.rin.dz.nomoredomains.rocks/',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.setItem('token')}`
   }
 })
 
