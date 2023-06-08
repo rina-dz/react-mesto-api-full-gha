@@ -1,7 +1,7 @@
 class Api {
   constructor(data) {
     this.baseUrl = data.baseUrl;
-    this.headers = data.headers;
+    //this.headers = data.headers;
   }
 
   _checkResponse(res) {
@@ -20,28 +20,40 @@ class Api {
 
   //получение карточек с сервера
   getInitialCards() {
+    const token = localStorage.getItem('token');
     console.log(this.headers);
     return this._request(`${this.baseUrl}cards`, {
       method: 'GET',
-      headers: this.headers
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     })
   }
 
   //получения информации о пользователе с сервера
   getUserInfo() {
+    const token = localStorage.getItem('token');
     return this._request(`${this.baseUrl}users/me`, {
       method: 'GET',
-      headers: this.headers
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     })
   }
 
   //изменение информации о пользователе
   changeUserInfo(newInfo) {
+    const token = localStorage.getItem('token');
     const newName = newInfo.name;
     const newDescription = newInfo.description;
     return this._request(`${this.baseUrl}users/me`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         name: newName,
         about: newDescription
@@ -51,10 +63,14 @@ class Api {
 
   //изменение аватара пользователя
   changeAvatar(newInfo) {
+    const token = localStorage.getItem('token');
     const newAvatar = newInfo.avatar;
     return this._request(`${this.baseUrl}users/me/avatar`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         avatar: newAvatar
       })
@@ -63,11 +79,15 @@ class Api {
 
   //добавление новой карточки
   addNewCard(newCard) {
+    const token = localStorage.getItem('token');
     const cardName = newCard.name;
     const cardLink = newCard.link;
     return this._request(`${this.baseUrl}cards`, {
       method: 'POST',
-      headers: this.headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         name: cardName,
         link: cardLink
@@ -77,25 +97,37 @@ class Api {
 
   //удаление карточки
   deleteCard(cardId) {
+    const token = localStorage.getItem('token');
     return this._request(`${this.baseUrl}cards/${cardId}`, {
       method: 'DELETE',
-      headers: this.headers
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     })
   }
 
   //поставить лайк
   setLike(cardId) {
+    const token = localStorage.getItem('token');
     return this._request(`${this.baseUrl}cards/${cardId}/likes`, {
       method: 'PUT',
-      headers: this.headers
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     })
   }
 
   //убрать лайк
   removeLike(cardId) {
+    const token = localStorage.getItem('token');
     return this._request(`${this.baseUrl}cards/${cardId}/likes`, {
       method: 'DELETE',
-      headers: this.headers
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
     })
   }
 };
@@ -103,10 +135,10 @@ class Api {
 const newApi = new Api({
   baseUrl: 'https://api.rin.dz.nomoredomains.rocks/',
   // baseUrl: 'https://localhost:3000/',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
-  }
+  //headers: {
+  //'Content-Type': 'application/json',
+  //'Authorization': `Bearer ${localStorage.getItem('token')}`
+  //}
 })
 
 export { newApi };
