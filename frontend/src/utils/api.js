@@ -21,7 +21,6 @@ class Api {
   //получение карточек с сервера
   getInitialCards() {
     const token = localStorage.getItem('token');
-    console.log(this.headers);
     return this._request(`${this.baseUrl}cards`, {
       method: 'GET',
       headers: {
