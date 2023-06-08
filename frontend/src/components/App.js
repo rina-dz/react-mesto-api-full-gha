@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Navigate, Routes, useNavigate } from 'react-router-dom';
+import { Route, Navigate, Routes, useNavigate, useHistory } from 'react-router-dom';
 import { newApi } from '../utils/api.js';
 import { newAuthApi } from '../utils/authenticationApi.js';
 import Header from './Header.js';
@@ -18,8 +18,8 @@ import CurrentUserContext from '../contexts/CurrentUserContext.js';
 import '../index.css';
 
 function App() {
-
   const navigate = useNavigate();
+  const history = useHistory();
   const [currentUser, setCurrentUser] = React.useState({});
   const [currentEmail, setCurrentEmail] = React.useState({});
   const [cards, addCards] = React.useState([]);
@@ -35,12 +35,12 @@ function App() {
   React.useEffect(() => {
     newApi.getInitialCards()
       .then((res) => {
-        addCards(res);
+        addCards([...res]);
       })
       .catch((err) => {
         console.log(err);
       })
-  }, [loggedIn]);
+  }, [history, loggedIn]);
 
   React.useEffect(() => {
     newApi.getUserInfo()
@@ -54,25 +54,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [loggedIn]);
-
-  //React.useEffect(() => {
-  //const jwt = localStorage.getItem('token');
-  //console.log(jwt);
-  //if (jwt) {
-  //newAuthApi.tokenValidityCheck(jwt)
-  //.then((res) => {
-  //changeState(true);
-  //setCurrentEmail(res.data.email);
-  //navigate('/main', { replace: true });
-  //})
-  //.catch((err) => {
-  // ошибка тут
-  //console.log("ошибка тут");
-  //console.log(err);
-  //})
-  //}
-  //}, [loggedIn]);
+  }, [history, loggedIn]);
 
   function signOut() {
     localStorage.removeItem('token');
@@ -155,8 +137,6 @@ function App() {
     newAuthApi.authorization(info.password, info.email)
       .then((data) => {
         if (data.token) {
-          // data.token без Bearer
-          console.log(data.token);
           localStorage.setItem('token', data.token);
         }
         changeState(true);

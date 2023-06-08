@@ -41,7 +41,6 @@ module.exports.getUserInfo = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь с указанным _id не найден.');
       } else {
-        console.log(user);
         res.send(user);
       }
     })
@@ -121,13 +120,6 @@ module.exports.login = (req, res, next) => {
             return Promise.reject(new AuthError('Неправильные почта или пароль'));
           }
           return res.send({ token: jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' }) });
-          // return res.send({
-          // token: jwt.sign(
-          // { _id: user._id },
-          // NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-          // { expiresIn: '7d' },
-          // ),
-          // });
         });
     })
     .catch(next);

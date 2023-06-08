@@ -134,11 +134,6 @@ class Api {
 
 const newApi = new Api({
   baseUrl: 'https://api.rin.dz.nomoredomains.rocks/',
-  // baseUrl: 'https://localhost:3000/',
-  //headers: {
-  //'Content-Type': 'application/json',
-  //'Authorization': `Bearer ${localStorage.getItem('token')}`
-  //}
 })
 
 export { newApi };

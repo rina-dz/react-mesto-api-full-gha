@@ -62,7 +62,6 @@ class authenticationApi {
 
 const newAuthApi = new authenticationApi({
       baseUrl: 'https://api.rin.dz.nomoredomains.rocks'
-      // baseUrl: 'https://localhost:3000'
 })
 
 export { newAuthApi };
