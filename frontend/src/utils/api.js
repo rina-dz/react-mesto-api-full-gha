@@ -104,7 +104,7 @@ const newApi = new Api({
   // baseUrl: 'https://localhost:3000/',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
   }
 })
 

@@ -47,6 +47,7 @@ function App() {
       .then((res) => {
         const info = { name: res.name, description: res.about, avatar: res.avatar, _id: res._id };
         changeState(true);
+        setCurrentEmail(res.email);
         setCurrentUser(info);
         navigate('/main', { replace: true });
       })
