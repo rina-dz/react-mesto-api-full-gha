@@ -20,6 +20,7 @@ class Api {
 
   //получение карточек с сервера
   getInitialCards() {
+    console.log(this.headers);
     return this._request(`${this.baseUrl}cards`, {
       method: 'GET',
       headers: this.headers
@@ -104,7 +105,7 @@ const newApi = new Api({
   // baseUrl: 'https://localhost:3000/',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
   }
 })
 
