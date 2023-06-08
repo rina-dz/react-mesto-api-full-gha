@@ -7,7 +7,7 @@ const AccessError = require('../utils/errors/access-err');
 // получить все карточки
 module.exports.getAllCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send({ cards }))
     .catch(next);
 };
 

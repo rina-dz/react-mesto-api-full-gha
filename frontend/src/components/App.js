@@ -46,28 +46,32 @@ function App() {
     newApi.getUserInfo()
       .then((res) => {
         const info = { name: res.name, description: res.about, avatar: res.avatar, _id: res._id };
+        changeState(true);
         setCurrentUser(info);
+        navigate('/main', { replace: true });
       })
       .catch((err) => {
         console.log(err);
       })
   }, [loggedIn]);
 
-  React.useEffect(() => {
-    const jwt = localStorage.getItem('token');
-    console.log(jwt);
-    if (jwt) {
-      newAuthApi.tokenValidityCheck(jwt)
-        .then((res) => {
-          changeState(true);
-          setCurrentEmail(res.data.email);
-          navigate('/main', { replace: true });
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    }
-  }, [loggedIn]);
+  //React.useEffect(() => {
+  //const jwt = localStorage.getItem('token');
+  //console.log(jwt);
+  //if (jwt) {
+  //newAuthApi.tokenValidityCheck(jwt)
+  //.then((res) => {
+  //changeState(true);
+  //setCurrentEmail(res.data.email);
+  //navigate('/main', { replace: true });
+  //})
+  //.catch((err) => {
+  // ошибка тут
+  //console.log("ошибка тут");
+  //console.log(err);
+  //})
+  //}
+  //}, [loggedIn]);
 
   function signOut() {
     localStorage.removeItem('token');
@@ -148,11 +152,11 @@ function App() {
 
   function handleLogin(info) {
     newAuthApi.authorization(info.password, info.email)
-      .then((data) => {
-        if (data.token) {
+      .then((token) => {
+        if (token) {
           // data.token без Bearer
-          console.log(data.token);
-          localStorage.setItem('token', data.token);
+          console.log(token);
+          localStorage.setItem('token', token);
         }
         changeState(true);
         setCurrentEmail(info.email);

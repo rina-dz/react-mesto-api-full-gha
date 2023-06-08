@@ -53,7 +53,7 @@ class authenticationApi {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                'authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             }
         })
     }
@@ -62,6 +62,7 @@ class authenticationApi {
 
 const newAuthApi = new authenticationApi({
       baseUrl: 'https://api.rin.dz.nomoredomains.rocks'
+      // baseUrl: 'https://localhost:3000'
 })
 
 export { newAuthApi };
