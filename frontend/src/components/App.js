@@ -33,8 +33,8 @@ function App() {
 
   React.useEffect(() => {
     newApi.getInitialCards()
-      .then((res) => {
-        addCards(res);
+      .then(([res]) => {
+        addCards([...res]);
       })
       .catch((err) => {
         console.log(err);

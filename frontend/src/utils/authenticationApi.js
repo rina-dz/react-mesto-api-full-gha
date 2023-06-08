@@ -46,18 +46,6 @@ class authenticationApi {
         })
     }
 
-
-    //проверка валидности токена и получение email для вставки в шапку сайта
-    tokenValidityCheck(token) {
-        return this._request(`${this.baseUrl}/users/me`, {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': `Bearer ${token}`
-            }
-        })
-    }
-
 }
 
 const newAuthApi = new authenticationApi({

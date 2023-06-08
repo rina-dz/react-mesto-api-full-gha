@@ -1,7 +1,6 @@
 class Api {
   constructor(data) {
     this.baseUrl = data.baseUrl;
-    //this.headers = data.headers;
   }
 
   _checkResponse(res) {
