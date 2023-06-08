@@ -53,6 +53,7 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
+    // .populate(['likes', 'owner'])
     .orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
     .then((card) => {
       res.send(card);
@@ -72,6 +73,7 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
+    // .populate(['likes', 'owner'])
     .orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
     .then((card) => {
       res.send(card);

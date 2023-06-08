@@ -62,7 +62,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     if (!isLiked) {
       newApi.setLike(card._id)
         .then((newCard) => {
