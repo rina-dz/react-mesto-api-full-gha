@@ -152,11 +152,11 @@ function App() {
 
   function handleLogin(info) {
     newAuthApi.authorization(info.password, info.email)
-      .then((token) => {
-        if (token) {
+      .then((data) => {
+        if (data.token) {
           // data.token без Bearer
-          console.log(token);
-          localStorage.setItem('token', token);
+          console.log(data.token);
+          localStorage.setItem('token', data.token);
         }
         changeState(true);
         setCurrentEmail(info.email);
