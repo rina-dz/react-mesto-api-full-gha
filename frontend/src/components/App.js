@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Route, Navigate, Routes, useNavigate } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import { newApi } from '../utils/api.js';
 import { newAuthApi } from '../utils/authenticationApi.js';
 import Header from './Header.js';
@@ -20,7 +19,6 @@ import '../index.css';
 
 function App() {
   const navigate = useNavigate();
-  const history = useHistory();
   const [currentUser, setCurrentUser] = React.useState({});
   const [currentEmail, setCurrentEmail] = React.useState({});
   const [cards, addCards] = React.useState([]);
@@ -41,7 +39,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [history, loggedIn]);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     newApi.getUserInfo()
@@ -55,7 +53,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [history, loggedIn]);
+  }, [loggedIn]);
 
   function signOut() {
     localStorage.removeItem('token');
