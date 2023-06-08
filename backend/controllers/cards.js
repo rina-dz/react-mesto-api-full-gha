@@ -7,7 +7,7 @@ const AccessError = require('../utils/errors/access-err');
 // получить все карточки
 module.exports.getAllCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send(cards))
+    .then((cards) => res.send({ data: cards }))
     .catch(next);
 };
 
@@ -53,7 +53,6 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
-    // .populate(['likes', 'owner'])
     .orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
     .then((card) => {
       res.send(card);
@@ -73,7 +72,6 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
-    // .populate(['likes', 'owner'])
     .orFail(() => new NotFoundError('Пользователь с указанным id не существует'))
     .then((card) => {
       res.send(card);

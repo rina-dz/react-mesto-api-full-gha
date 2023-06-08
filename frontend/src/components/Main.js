@@ -18,7 +18,7 @@ function Main(props) {
         <button className="profile__add-button" type="button" onClick={props.onAddPlace} />
       </section>
       <section className="elements">
-        {props.cards.forEach((el) => (
+        {props.cards.map((el) => (
           <Card card={el} key={el._id} link={el.link} name={el.name} likes={el.likes} likesNum={el.likes.length}
             owner={el.owner} onCardClick={props.onCardClick} onCardLike={props.onCardLike}
             onCardDelete={props.onCardDelete} />

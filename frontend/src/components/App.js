@@ -32,21 +32,12 @@ function App() {
   const [selectedCard, selectCard] = React.useState({});
 
   React.useEffect(() => {
-    newApi.getInitialCards()
-      .then(([res]) => {
-        addCards([...res]);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, [loggedIn]);
-
-  React.useEffect(() => {
-    newApi.getUserInfo()
-      .then((res) => {
-        const info = { name: res.name, description: res.about, avatar: res.avatar, _id: res._id };
+    Promise.all([newApi.getInitialCards(), newApi.getUserInfo()])
+      .then(([resCards, resInfo]) => {
+        addCards(resCards.data);
+        const info = { name: resInfo.name, description: resInfo.about, avatar: resInfo.avatar, _id: resInfo._id };
         changeState(true);
-        setCurrentEmail(res.email);
+        setCurrentEmail(resInfo.email);
         setCurrentUser(info);
         navigate('/main', { replace: true });
       })
