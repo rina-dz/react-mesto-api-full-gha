@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Route, Navigate, Routes, useNavigate, useHistory } from 'react-router-dom';
+import { Route, Navigate, Routes, useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { newApi } from '../utils/api.js';
 import { newAuthApi } from '../utils/authenticationApi.js';
 import Header from './Header.js';
