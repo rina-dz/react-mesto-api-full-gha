@@ -7,6 +7,7 @@
 ## Используемые технологии
 
 Front-end: HTML5, CSS3 (Flexbox, Grid Layout, Adaptive UI, media queries), БЭМ, JavaScript, Webpack, React JS
+
 Back-end: Node.js, express.js, MongoDB, Mongoose
 
 ## Инструкция по развёртыванию
@@ -14,7 +15,8 @@ Back-end: Node.js, express.js, MongoDB, Mongoose
 1. Склонировать репозиторий при помощи команды "git clone https://github.com/rina-dz/react-mesto-api-full-gha.git"
 2. Установить зависимости в папках 'frontend' и 'backend' при помощи команды "npm i"
 3. Запустить приложение в папках 'frontend' командой "npm run start" и 'backend' командой "npm run dev"
- Приложение запущено, поздравляю!
+4. 
+   Приложение запущено, поздравляю!
 
 Адрес репозитория: https://github.com/rina-dz/react-mesto-api-full-gha
 
