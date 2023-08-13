@@ -15,14 +15,15 @@ Back-end: Node.js, express.js, MongoDB, Mongoose
 1. Склонировать репозиторий при помощи команды "git clone https://github.com/rina-dz/react-mesto-api-full-gha.git"
 2. Установить зависимости в папках 'frontend' и 'backend' при помощи команды "npm i"
 3. Запустить приложение в папках 'frontend' командой "npm run start" и 'backend' командой "npm run dev"
-4. 
+ 
    Приложение запущено, поздравляю!
 
-Адрес репозитория: https://github.com/rina-dz/react-mesto-api-full-gha
-
 ## Ссылки на проект
+
+Адрес репозитория: https://github.com/rina-dz/react-mesto-api-full-gha
 
 IP 51.250.14.205
 
 Front-end https://rin.dz.nomoredomains.rocks
+
 Back-end https://api.rin.dz.nomoredomains.rocks
